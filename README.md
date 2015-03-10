@@ -4,6 +4,7 @@
 
 ###1) Permita que o usuário veja mais informações na célula sobre a mídia procurada;
 ###2) Adicione no cabeçalho da tabela um campo de texto e um botão para que o usuário escolha o termo a ser procurado.
+###3) Use os recursos de internacionalização para permitir que o botão exiba a palavra Buscar, Search e Recherche para os idiomas Português, Inglês e Francês
 
 ##Desafio Prata
 
