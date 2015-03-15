@@ -1,17 +1,16 @@
 //
-//  Filme.h
+//  EBook.h
 //  iTunesSearch
 //
-//  Created by joaquim on 09/03/15.
+//  Created by William Hong Jun Cho on 3/12/15.
 //  Copyright (c) 2015 joaquim. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "Midia.h"
 
-@interface Filme : Midia
+@interface EBook : Midia
 
-@property (nonatomic, strong) NSString *duration;
-
+@property (nonatomic, strong) NSString *autor;
 
 @end

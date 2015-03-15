@@ -7,7 +7,6 @@
 //
 
 #import "iTunesManager.h"
-#import "Entidades/Filme.h"
 
 @implementation iTunesManager
 
@@ -29,12 +28,11 @@ static bool isFirstAccess = YES;
 }
 
 
-- (NSArray *)buscarMidias:(NSString *)termo {
-    if (!termo) {
+- (SearchData *)buscarMidias:(NSString *)termo {
+    if (!termo)
         termo = @"";
-    }
     
-    NSString *url = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&media=movie", termo];
+    NSString *url = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&", termo];
     NSData *jsonData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
     
     NSError *error;
@@ -45,23 +43,7 @@ static bool isFirstAccess = YES;
         NSLog(@"Não foi possível fazer a busca. ERRO: %@", error);
         return nil;
     }
-    
-    NSArray *resultados = [resultado objectForKey:@"results"];
-    NSMutableArray *filmes = [[NSMutableArray alloc] init];
-    
-    for (NSDictionary *item in resultados) {
-        Filme *filme = [[Filme alloc] init];
-        [filme setNome      :[item objectForKey:@"trackName"]];
-        [filme setTrackId   :[item objectForKey:@"trackId"]];
-        [filme setArtista   :[item objectForKey:@"artistName"]];
-        [filme setDuracao   :[item objectForKey:@"trackTimeMillis"]];
-        [filme setGenero    :[item objectForKey:@"primaryGenreName"]];
-        [filme setArtworkUrl:[item objectForKey:@"artworkUrl30"]];
-        [filme setPais:[item objectForKey:@"country"]];
-        [filmes addObject:filme];
-    }
-    
-    return filmes;
+    return [[SearchData alloc] initWithResults:[resultado objectForKey:@"results"]];
 }
 
 

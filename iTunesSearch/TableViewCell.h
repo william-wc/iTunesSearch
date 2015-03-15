@@ -10,8 +10,8 @@
 
 @interface TableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *nome;
-@property (weak, nonatomic) IBOutlet UILabel *tipo;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *kind;
 @property (weak, nonatomic) IBOutlet UILabel *genero;
 
 

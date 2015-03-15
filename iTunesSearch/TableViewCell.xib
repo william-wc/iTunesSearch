@@ -47,8 +47,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="genero" destination="ysf-Ht-gyw" id="sQv-q6-sTm"/>
-                <outlet property="nome" destination="UIA-JU-luV" id="ubX-WX-gam"/>
-                <outlet property="tipo" destination="6Z5-yj-wnl" id="vYj-HE-tLd"/>
+                <outlet property="kind" destination="6Z5-yj-wnl" id="jSp-IC-wBP"/>
+                <outlet property="name" destination="UIA-JU-luV" id="R35-VK-Z5u"/>
             </connections>
             <point key="canvasLocation" x="577" y="80.5"/>
         </tableViewCell>

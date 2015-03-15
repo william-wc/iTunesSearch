@@ -10,7 +10,7 @@
 
 #warning Classe importada para uso no metodo de inicilizacao da App
 #import "TableViewController.h"
-#import "SearchViewController.h";
+#import "MainTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,13 +29,13 @@
 #warning Adicionado codigo para iniciar com a interface do TableView
 //    TableViewController *tvc = [[TableViewController alloc] initWithNibName:@"TableView" bundle:nil];
     
-    //*
+    /*
     TableViewController *tvc = [[TableViewController alloc] init];
     [self.window setRootViewController:tvc];
     /*/
     //Iniciando com SearchView
-    SearchViewController *svc = [[SearchViewController alloc] init];
-    [self.window setRootViewController:svc];
+    MainTableViewController *vc = [[MainTableViewController alloc] init];
+    [self.window setRootViewController:vc];
     //*/
     
     [self.window makeKeyAndVisible];

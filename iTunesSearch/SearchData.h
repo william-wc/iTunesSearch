@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Midia.h"
+#import "Filme.h"
+#import "EBook.h"
+#import "Musica.h"
+#import "Podcast.h"
 
 @interface SearchData : NSObject
 
-@property (nonatomic, strong) NSString *value;
-
+-(id)initWithResults:(NSArray *)results;
+-(void)addData:(Midia *)midia;
+-(NSArray *)getArrayByKind:(NSString *)kind;
 
 @end
