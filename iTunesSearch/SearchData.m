@@ -9,13 +9,15 @@
 #import "SearchData.h"
 
 @implementation SearchData {
-    NSMutableArray *data;
 }
+
+@synthesize data, midiaTypes;
 
 -(id)init {
     self = [super init];
     if(self) {
-        data = [[NSMutableArray alloc] init];
+        midiaTypes = [[NSMutableArray alloc]init];
+        data = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -23,7 +25,9 @@
 -(id)initWithResults:(NSArray *)results {
     self = [super init];
     if(self) {
-        data = [[NSMutableArray alloc] init];
+        midiaTypes = [[NSMutableArray alloc]init];
+        data = [[NSMutableDictionary alloc] init];
+        
         for (NSDictionary *item in results) {
             NSString *itemKind = [item objectForKey:@"kind"];
             
@@ -32,7 +36,7 @@
             //todo add regex
             if([itemKind isEqualToString:@"feature-movie"]) {
                 Filme *filme = [[Filme alloc] init];
-                [filme setDuration   :[item objectForKey:@"trackTimeMillis"]];
+                [filme setDuration:[item objectForKey:@"trackTimeMillis"]];
                 midia = filme;
             } else if([itemKind isEqualToString:@"song"]) {
                 Musica *musica = [[Musica alloc] init];
@@ -49,6 +53,8 @@
             }
             
             if(midia) {
+                NSString *kind = [item objectForKey:@"kind"];
+                
                 [midia setKind          :[item objectForKey:@"kind"]];
                 [midia setTrackName     :[item objectForKey:@"trackName"]];
                 [midia setTrackId       :[item objectForKey:@"trackId"]];
@@ -57,8 +63,17 @@
                 [midia setPrimaryGenreName:[item objectForKey:@"primaryGenreName"]];
                 [midia setCountry       :[item objectForKey:@"country"]];
                 [midia setCurrency      :[item objectForKey:@"currency"]];
-                [midia setArtworkUrl    :[item objectForKey:@"artworkUrl30"]];
-                [data addObject:midia];
+                [midia setArtworkUrl    :[item objectForKey:@"artworkUrl100"]];
+                
+                if(![midiaTypes containsObject:kind])
+                    [midiaTypes addObject:kind];
+                
+                NSMutableArray *array = [data objectForKey:kind];
+                if(!array) {
+                    array = [[NSMutableArray alloc] init];
+                    [data setObject:array forKey:kind];
+                }
+                [array addObject:midia];
             }
         }
     }
@@ -70,12 +85,7 @@
 }
 
 -(NSArray *)getArrayByKind:(NSString *)kind {
-    NSMutableArray *filtered = [[NSMutableArray alloc]init];
-    for (Midia *midia in data) {
-        if([midia.kind isEqualToString:kind])
-            [filtered addObject:midia];
-    }
-    return filtered;
+    return [data objectForKey:kind];
 }
 
 @end

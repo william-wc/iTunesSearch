@@ -19,4 +19,7 @@
 -(void)addData:(Midia *)midia;
 -(NSArray *)getArrayByKind:(NSString *)kind;
 
+@property (nonatomic, strong) NSMutableDictionary *data;
+@property (nonatomic, strong) NSMutableArray *midiaTypes;
+
 @end

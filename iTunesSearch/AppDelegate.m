@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 
 #warning Classe importada para uso no metodo de inicilizacao da App
-#import "TableViewController.h"
 #import "MainTableViewController.h"
 
 @interface AppDelegate ()
@@ -34,8 +33,10 @@
     [self.window setRootViewController:tvc];
     /*/
     //Iniciando com SearchView
+    UINavigationController *nav = [[UINavigationController alloc]init];
     MainTableViewController *vc = [[MainTableViewController alloc] init];
-    [self.window setRootViewController:vc];
+    [nav pushViewController:vc animated:YES];
+    [self.window setRootViewController:nav];
     //*/
     
     [self.window makeKeyAndVisible];

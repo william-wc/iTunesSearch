@@ -7,6 +7,7 @@
 */
 "all" = "Todos";
 "movie" = "Filme";
+"feature-movie" = "Filme";
 "ebook" = "EBook";
 "song" = "Música";
 "podcast" = "Podcast";
